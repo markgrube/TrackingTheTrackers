@@ -27,9 +27,9 @@
     "history",
     "management",
     "notifications",
-    "tabs"
+    "tabs",
     "webRequest",
-    "webRequestBlocking",
+    "webRequestBlocking"
   ],
   "content_scripts": [
     {
