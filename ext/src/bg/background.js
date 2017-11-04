@@ -75,21 +75,49 @@ function addTrackerToDb(host, tracker){
 function getListOfHosts(cb){
     chrome.storage.local.get("hosts", function(result){
         if (result["hosts"] === undefined){
-            return [];
+            cb([]);
+        } else {
+            cb(Object.keys(result["hosts"]));
         }
-        cb(Object.keys(result["hosts"]));
     });
 }
 
 function getListOfTrackers(cb){
     chrome.storage.local.get("trackers", function(result){
         if (result["trackers"] === undefined){
-            return [];
+            cb([]);
+        } else {
+            cb(Object.keys(result["trackers"]));
         }
-        cb(Object.keys(result["trackers"]));
     });
 }
 
-function getAllTrackersForHost(hostname){}
+function getAllTrackersForHost(hostname, cb){
+    chrome.storage.local.get("hosts", function(result){
+        if (result["hosts"] === undefined) {
+            cb([]);
+        } else {
+            var trackers = result["hosts"][hostname];
+            if (trackers === undefined){
+                cb([]);
+            } else {
+                cb(trackers)
+            }
+        }
+    })
+}
 
-function getAllHostsForTracker(tracker){}
+function getAllHostsForTracker(trackerName, cb){
+    chrome.storage.local.get("trackers", function(result){
+        if (result["trackers"] === undefined) {
+            cb([]);
+        } else {
+            var hosts = result["trackers"][trackerName];
+            if (hosts === undefined){
+                cb([]);
+            } else {
+                cb(hosts)
+            }
+        }
+    })
+}
