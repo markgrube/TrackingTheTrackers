@@ -1,5 +1,5 @@
 {
-  "name": "CHANGE THIS : Extension boilerplate",
+  "name": "Track the Trackers!",
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "This extension was created with the awesome extensionizr.com",
@@ -32,7 +32,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.google.com/*"
+        "<all_urls>"
       ],
       "css": [
         "src/inject/inject.css"
@@ -40,7 +40,7 @@
     },
     {
       "matches": [
-        "https://www.google.com/*"
+        "<all_urls>"
       ],
       "js": [
         "src/inject/inject.js"
