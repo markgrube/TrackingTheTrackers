@@ -1,9 +1,66 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tracking The Tracker</title>
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="./bootstrap-3.3.7-dist%202/css/bootstrap.css" rel="stylesheet">
+    <link href="./bootstrap-3.3.7-dist%202/css/bootstrap-theme.css" rel="stylesheet">
+  </head>
 
-</body>
+  <body>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>TRACKING THE TRACKERS</h1>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- First Section-->
+      <div class="row">
+        <div class="col-md-6">
+          <h2> Trackers </h2>
+          <p> Information about all the trackers tracking you based on websites you have visited</p>
+          <!-- Single button dropdown -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle btn-success" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Trackers Detected
+              Action <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <!-- Dynamically add the trackers we have recorded from our session-->
+            </ul>
+          </div>
+        </div>
+        <!--Second Column-->
+        <div class="col-md-6">
+          <h2> Websites Visited </h2>
+          <p> Information about all the websites visited by the user</p>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle btn-success" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+              Websites Visited <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <!-- Dyanmically added the website urls we visited-->
+              <!-- For each website url, in the drop down attach -->
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+    </div>
+
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script src="bootstrap-3.3.7-dist%202/js/bootstrap.js"></script>
+  </body>
 </html>
