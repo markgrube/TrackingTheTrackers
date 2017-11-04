@@ -1,7 +1,7 @@
 $(function() {
 
-	var tracker = new Chart({
+	// var tracker = new Chart({
 		
-	});
+	// });
 
 });
