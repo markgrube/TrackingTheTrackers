@@ -29,7 +29,8 @@
     "notifications",
     "tabs",
     "webRequest",
-    "webRequestBlocking"
+    "webRequestBlocking",
+    "storage"
   ],
   "content_scripts": [
     {
