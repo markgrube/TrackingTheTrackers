@@ -22,20 +22,74 @@ window.addEventListener('load', function(evt) {
 });
 
 function addToDb(host, tracker){
-    addPairToDb(host, tracker);
-    addPairToDb(tracker, host);
+    addHostToDb(host, tracker);
+    addTrackerToDb(host, tracker);
 }
 
-function addPairToDb(string1, string2){
-    var obj = {};
-    obj[string1] = [];
-    chrome.storage.local.get(string1, function(result){
-        if (result[string1] !== undefined) {
-            obj[string1] = result[string1];
+function addHostToDb(host, tracker){
+    var listOfAllHosts = {};
+
+    chrome.storage.local.get("hosts", function(result){
+        if (result["hosts"] !== undefined){
+            listOfAllHosts = result["hosts"];
         }
-        if (obj[string1].indexOf(string2) === -1) {
-            obj[string1].push(string2)
+
+        if (listOfAllHosts[host] === undefined) {
+            var item = {};
+            item[host] = [tracker];
+            listOfAllHosts[host] = [tracker];
+        } else {
+            var trackers = listOfAllHosts[host];
+            if(trackers.indexOf(tracker) === -1){
+                trackers.push(tracker);
+            }
+            listOfAllHosts[host] = trackers;
         }
-        chrome.storage.local.set(obj);
+        chrome.storage.local.set({"hosts": listOfAllHosts})
     });
 }
+
+function addTrackerToDb(host, tracker){
+    var listOfAllTrackers = {};
+
+    chrome.storage.local.get("trackers", function(result){
+        if (result["trackers"] !== undefined){
+            listOfAllTrackers = result["trackers"];
+        }
+
+        if (listOfAllTrackers[tracker] === undefined) {
+            var item = {};
+            item[tracker] = [host];
+            listOfAllTrackers[tracker] = [host];
+        } else {
+            var hosts = listOfAllTrackers[host];
+            if(hosts.indexOf(host) === -1){
+                hosts.push(host);
+            }
+            listOfAllTrackers[tracker] = hosts;
+        }
+        chrome.storage.local.set({"trackers": listOfAllTrackers})
+    });
+}
+
+function getListOfHosts(cb){
+    chrome.storage.local.get("hosts", function(result){
+        if (result["hosts"] === undefined){
+            return [];
+        }
+        cb(Object.keys(result["hosts"]));
+    });
+}
+
+function getListOfTrackers(cb){
+    chrome.storage.local.get("trackers", function(result){
+        if (result["trackers"] === undefined){
+            return [];
+        }
+        cb(Object.keys(result["trackers"]));
+    });
+}
+
+function getAllTrackersForHost(hostname){}
+
+function getAllHostsForTracker(tracker){}
