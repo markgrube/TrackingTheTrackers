@@ -28,6 +28,8 @@
     "management",
     "notifications",
     "tabs"
+    "webRequest",
+    "webRequestBlocking",
   ],
   "content_scripts": [
     {
