@@ -2,7 +2,7 @@
   "name": "Track the Trackers!",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "This extension was created with the awesome extensionizr.com",
+  "description": "This extension was created to track third party trackers",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
