@@ -32,7 +32,7 @@
                     aria-haspopup="true" aria-expanded="false"> Trackers Detected
               Action <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" id="tracker_info">
               <!-- Dynamically add the trackers we have recorded from our session-->
             </ul>
           </div>
@@ -46,21 +46,18 @@
                     aria-haspopup="true" aria-expanded="false">
               Websites Visited <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" id="websites_visited">
               <!-- Dyanmically added the website urls we visited-->
-              <!-- For each website url, in the drop down attach -->
+              <!-- For each website url, in the drop down attach the trackers related to the website -->
             </ul>
           </div>
 
         </div>
       </div>
-
-      <footer>
-        <p>&copy; 2016 Company, Inc.</p>
-      </footer>
     </div>
 
-    <script src="../jquery-3.2.1.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
     <script src="bootstrap-3.3.7-dist%202/js/bootstrap.js"></script>
+    <script src="js/getDynamic%20information.js"></script>
   </body>
 </html>
