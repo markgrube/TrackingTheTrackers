@@ -9,12 +9,18 @@ $(document).ready(function(){
     function renderTrackers(trackers){
         trackers.forEach(function(tracker){
             var tracker_div = $("#tracker_info");
-
-
-            tracker_div.append('<li class="list-group-item" >' + tracker + '</li>')
+            tracker_div.append('<option>' + tracker + '</option>')
         });
 
     }
+    var originalState = $(".tracker_detail").clone();
+    $("#some_div").replaceWith(originalState);
+
+    $("#tracker_info").change(function() {
+        var tracker = $("#tracker_info").val();
+        alert( "Handler for .change() called." + tracker);
+        $(".tracker_detail").
+    });
 
     /** Get the website from the Database and then dynamically
      * render the the return as a dropdown list
