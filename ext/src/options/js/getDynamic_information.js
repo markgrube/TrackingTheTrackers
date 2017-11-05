@@ -15,17 +15,22 @@ $(document).ready(function(){
             tracker_div.append('<option>' + tracker + '</option>')
         });
 
-        $("#tracker_info").change(function() {
+        $("#tracker_info").change(changeHandler);
+
+        function changeHandler(evt) {
             var tracker = $("#tracker_info").val();
             var list = $('#website-list');
 
             getAllHostsForTracker(tracker, function(websites) {
                 list.empty();
-                result.forEach(function(website) {
+                console.log(websites);
+                websites.forEach(function(website) {
                     list.append("<li>" + website + "</li>")
                 })
-            })
-        });
+            });
+        }
+
+        changeHandler(null);
     });
 
     /** Get the website from the Database and then dynamically
