@@ -23,43 +23,54 @@
     <div class="container">
       <!-- First Section-->
       <div class="row">
+        <!--First Column-->
         <div class="col-md-6">
           <h2> Trackers </h2>
           <p> Information about all the trackers tracking you based on websites you have visited</p>
-          <div id="trackers-chart"></div>
+          <div id="trackers-chart"></div> <!-- Div to handle the chart graphics -->
           <!-- Single button dropdown -->
           <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle btn-success" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"> Trackers Detected
-              Action <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
+            <select name="trackers" id="tracker_info">
               <!-- Dynamically add the trackers we have recorded from our session-->
-            </ul>
+            </select>
           </div>
+          <!--If a user clicks on a specific tracker-->
+          <div class="tracker_detail">
+            <ul class="tracker_list_item_detail">
+
+            </ul>
+          </div> <!-- Div to handle clicks on trackers -->
         </div>
+
+
         <!--Second Column-->
         <div class="col-md-6">
           <h2> Websites Visited </h2>
           <p> Information about all the websites visited by the user</p>
           <div id="websites-chart"></div>
+          <!-- Drop down -->
           <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle btn-success" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-              Websites Visited <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <!-- Dyanmically added the website urls we visited-->
-              <!-- For each website url, in the drop down attach -->
-            </ul>
-          </div>
 
-        </div>
-      </div>
-    </div>
+            <select name="websites" id="websites_visited">
+              <!-- Dyanmically added the website urls we visited-->
+              <!-- For each website url, in the drop down attach the trackers related to the website -->
+            </select>
+          </div>
+          <!-- if a user clicks on a website from the drop down -->
+          <div class="website_detail">
+            <ul class="web_list_item_detail">
+
+            </ul>
+          </div> <!-- Div to handle clicks on websites -->
+        </div> <!-- end of website section -->
+
+      </div> <!-- end of row -->
+
+    </div> <!-- end of main container -->
 
     <script src="jquery-3.2.1.min.js"></script>
     <script src="bootstrap-3.3.7-dist%202/js/bootstrap.js"></script>
+    <script src="js/getDynamic_information.js"></script>
     <script src="js/index.js"></script>
     <script src="js/frappe-charts.min.iife.js"></script>
     <script src="../bg/background.js"></script>
