@@ -13,8 +13,12 @@ window.addEventListener('load', function(evt) {
         var domain = getDomain(details.url);
 
 		if(window.blacklist.indexOf(domain) != -1) {
-            // we found bullshit tracker!
-            console.log('tracker!! ' + domain);
+
+            chrome.tabs.get(details.tabId, function(tab) {
+                var website = getDomain(tab.url);
+
+                addToDb(website, domain);
+            });
         }
 	}, 
 	{urls: ["<all_urls>"]}, 
@@ -33,18 +37,21 @@ function addHostToDb(host, tracker){
         if (result["hosts"] !== undefined){
             listOfAllHosts = result["hosts"];
         }
+        else {
+            listOfAllHosts = {};
+        }
 
         if (listOfAllHosts[host] === undefined) {
-            var item = {};
-            item[host] = [tracker];
             listOfAllHosts[host] = [tracker];
-        } else {
+        } 
+        else {
             var trackers = listOfAllHosts[host];
             if(trackers.indexOf(tracker) === -1){
                 trackers.push(tracker);
             }
             listOfAllHosts[host] = trackers;
         }
+
         chrome.storage.local.set({"hosts": listOfAllHosts})
     });
 }
@@ -56,18 +63,21 @@ function addTrackerToDb(host, tracker){
         if (result["trackers"] !== undefined){
             listOfAllTrackers = result["trackers"];
         }
+        else {
+            listOfAllTrackers = {};
+        }
 
         if (listOfAllTrackers[tracker] === undefined) {
-            var item = {};
-            item[tracker] = [host];
             listOfAllTrackers[tracker] = [host];
-        } else {
-            var hosts = listOfAllTrackers[host];
+        } 
+        else {
+            var hosts = listOfAllTrackers[tracker];
             if(hosts.indexOf(host) === -1){
                 hosts.push(host);
             }
             listOfAllTrackers[tracker] = hosts;
         }
+
         chrome.storage.local.set({"trackers": listOfAllTrackers})
     });
 }
