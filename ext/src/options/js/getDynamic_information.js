@@ -48,7 +48,7 @@ $(document).ready(function(){
                 list.empty();
 
                 trackers.forEach(function(tracker) {
-                    list.append('<li>' + tracker + '</li>');
+                    list.append('<li class="list-item">' + tracker + '</li>');
                 });
             });
         }
