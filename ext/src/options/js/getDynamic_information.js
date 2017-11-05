@@ -5,29 +5,40 @@ $(document).ready(function(){
     /** Get the trackers from the Database and then dynamically
      * render the the return as a dropdown list
      */
-    var sample_trackers = [ "www.google.com", "www.facebook", "www.amazon.com"]
-    function renderTrackers(trackers){
+    var sample_trackers = getListOfTrackers(function(cb) {
+        console.log(cb);
+
+        var trackers = cb;
+        var tracker_div = $("#tracker_info");
+
         trackers.forEach(function(tracker){
-            var tracker_div = $("#tracker_info");
             tracker_div.append('<option>' + tracker + '</option>')
         });
 
-    }
-    var originalState = $(".tracker_detail").clone();
-    $("#some_div").replaceWith(originalState);
+        $("#tracker_info").change(changeHandler);
 
-    $("#tracker_info").change(function() {
-        var tracker = $("#tracker_info").val();
-        alert( "Handler for .change() called." + tracker);
-        $(".tracker_detail").
+        function changeHandler(evt) {
+            var tracker = $("#tracker_info").val();
+            var list = $('#website-list');
+
+            getAllHostsForTracker(tracker, function(websites) {
+                list.empty();
+                console.log(websites);
+                websites.forEach(function(website) {
+                    list.append("<li>" + website + "</li>")
+                })
+            });
+        }
+
+        changeHandler(null);
     });
 
     /** Get the website from the Database and then dynamically
      * render the the return as a dropdown list
      */
-    function renderWebsitesVisited(websites){
+    // function renderWebsitesVisited(websites){
 
-    }
-    renderTrackers(sample_trackers);
+    // }
+    // renderTrackers(sample_trackers);
 
 });
