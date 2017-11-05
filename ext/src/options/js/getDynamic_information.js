@@ -25,7 +25,7 @@ $(document).ready(function(){
                 list.empty();
                 console.log(websites);
                 websites.forEach(function(website) {
-                    list.append("<li>" + website + "</li>")
+                    list.append("<li class='list-item'>" + website + "</li>")
                 })
             });
         }

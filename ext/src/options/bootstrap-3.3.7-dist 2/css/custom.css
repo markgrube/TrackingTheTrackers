@@ -1,0 +1,16 @@
+.list-item {
+    font-size: 20px;
+    font-family: 'Oxygen', sans-serif;
+    color : #d8e3d7;
+    background-color: #245580;
+
+
+}
+
+.tracker_detail {
+    margin-top: 30px;
+}
+
+select > option {
+    margin : 15px;
+}
