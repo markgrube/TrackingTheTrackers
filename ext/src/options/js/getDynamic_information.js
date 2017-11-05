@@ -8,7 +8,10 @@ $(document).ready(function(){
     var sample_trackers = [ "www.google.com", "www.facebook", "www.amazon.com"]
     function renderTrackers(trackers){
         trackers.forEach(function(tracker){
-            $("#tracker_info").append("<li>"+"tracker"+"<li>")
+            var tracker_div = $("#tracker_info");
+
+
+            tracker_div.append('<li class="list-group-item" >' + tracker + '</li>')
         });
 
     }
@@ -19,4 +22,6 @@ $(document).ready(function(){
     function renderWebsitesVisited(websites){
 
     }
+    renderTrackers(sample_trackers);
+
 });
